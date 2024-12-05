@@ -1,0 +1,20 @@
+<div class="card" style="width: 18rem">
+  <div
+    thCardImg
+    *ngIf="headerImage.trim().length > 0"
+    [img]="headerImage"
+    class="card-img-top"
+    alt="..."
+  ></div>
+  <div *ngIf="headerVisible === true" class="card-header">
+    <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+  </div>
+  <div class="card-body">
+    <ng-content />
+  </div>
+  <div class="card-footer" >
+    <ng-content select="cardFooter">
+      ddassad
+    </ng-content>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<app-th-card
+  [headerVisible]="true"
+  headerImage="https://pbs.twimg.com/profile_images/1701878932176351232/AlNU3WTK_400x400.jpg"
+>
+  <ng-template #headera> Burası </ng-template>
+  <button *ngFor="let item of chartData">{{ item }}</button>
+  <div ngProjectAs="cardFooter">{{ footer }}</div>
+</app-th-card>
