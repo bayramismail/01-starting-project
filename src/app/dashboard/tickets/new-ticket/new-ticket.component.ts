@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   OnInit,
+  output,
   viewChild,
 } from '@angular/core';
 import { ControlComponent } from '../../../shared/control/control.component';
@@ -20,15 +21,12 @@ export class NewTicketComponent implements OnInit, AfterViewInit {
   //ViewChild içine 'form' ,ButtonComponent .vb yazdığımızda bunu html tarafında arayacaktır ve ona ulaşabilmemiz sağlayacaktır.
   // @ViewChild('form') private form?: ElementRef<HTMLFormElement>;
   //viewChild signal hali
+  add = output<{ title: string; text: string }>();
   private readonly form =
     viewChild.required<ElementRef<HTMLFormElement>>('form');
-  //  onSubmit(titleElement:HTMLInputElement){
-  //   console.dir(titleElement);
 
-  //  }
   onSubmit(title: string, ticketText: string) {
-    console.log(title, ticketText);
-
+    this.add.emit({ title: title, text: ticketText });
     this.form().nativeElement.reset();
   }
   ngOnInit(): void {

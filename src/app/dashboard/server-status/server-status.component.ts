@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   DestroyRef,
+  effect,
   inject,
   OnDestroy,
   OnInit,
@@ -20,7 +21,11 @@ export class ServerStatusComponent implements OnInit, AfterViewInit {
   // private interval?: ReturnType<typeof setInterval>;
   //OnDestroy alternatifi olarak
   private readonly destoryRef = inject(DestroyRef);
-  constructor() {}
+  constructor() {
+    effect(()=>{
+      console.log(this.currentStatus());
+    })
+  }
 
   ngOnInit(): void {
     /* this.interval =*/ 
